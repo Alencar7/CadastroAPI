@@ -1,6 +1,6 @@
 package dev.euvei.Cadastro.Missoes.Controller.Services;
 
-import dev.euvei.Cadastro.Ninjas.Controller.Services.NinjaModel;
+import dev.euvei.Cadastro.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

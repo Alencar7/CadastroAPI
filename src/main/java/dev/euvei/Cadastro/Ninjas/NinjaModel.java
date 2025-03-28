@@ -1,4 +1,4 @@
-package dev.euvei.Cadastro.Ninjas.Controller.Services;
+package dev.euvei.Cadastro.Ninjas;
 
 import dev.euvei.Cadastro.Missoes.Controller.Services.MissoesModel;
 import jakarta.persistence.*;

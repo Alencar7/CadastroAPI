@@ -1,4 +1,4 @@
-package dev.euvei.Cadastro.Ninjas.Controller.Services;
+package dev.euvei.Cadastro.Ninjas;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +13,5 @@ public class NinjaController {
     public String boasVindas(){
         return "Essa e minha primeira mensagem!";
     }
-
-
-
-
-
 
 }
