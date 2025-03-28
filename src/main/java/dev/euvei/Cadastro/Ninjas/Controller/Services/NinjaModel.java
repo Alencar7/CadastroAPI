@@ -22,6 +22,7 @@ public class NinjaModel {  // UM NINJA SO PODE RECEBER UMA MISSAO POR VEZ!
 
     private String nome;
 
+    @Column(unique = true) //coluna unica -> CPF, RG, Passaporte
     private  String email;
 
     private int idade;
