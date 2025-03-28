@@ -2,14 +2,18 @@ package dev.euvei.Cadastro.Missoes.Controller.Services;
 
 import dev.euvei.Cadastro.Ninjas.Controller.Services.NinjaModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-
 @Entity
 @Table(name = "tb_missoes")
-public class MissoesModel {
-    //UMA MISSAO PODE RECEBER VARIOS NINJAS!
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class MissoesModel { //UMA MISSAO PODE RECEBER VARIOS NINJAS!
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //@GenereatedValue = gera o Id automaticamente
