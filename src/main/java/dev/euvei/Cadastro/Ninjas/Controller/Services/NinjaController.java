@@ -1,4 +1,4 @@
-package dev.euvei.Cadastro;
+package dev.euvei.Cadastro.Ninjas.Controller.Services;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
