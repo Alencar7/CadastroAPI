@@ -17,7 +17,7 @@ public class MissoesModel { //UMA MISSAO PODE RECEBER VARIOS NINJAS!
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //@GenereatedValue = gera o Id automaticamente
-    private int Id;
+    private Long Id;
 
     private String nome;
 
