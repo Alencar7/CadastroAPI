@@ -23,7 +23,7 @@ public class MissoesModel { //UMA MISSAO PODE RECEBER VARIOS NINJAS!
 
     private String dificuldade;
 
-    private NinjaModel ninja; //acessar o ninja model
+    //private NinjaModel ninja; //acessar o ninja model
 
     @OneToMany(mappedBy = "missoes") //one missao - to - many ninjas
     private List<NinjaModel> ninjas;
