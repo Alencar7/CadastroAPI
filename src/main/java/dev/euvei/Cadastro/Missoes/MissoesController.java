@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 // localhost:8080/
 @RestController
-@RequestMapping("missoes") // rota criada
+@RequestMapping("/missoes") // rota criada
 public class MissoesController {
 
     // GET --> Mandar uma requisicao para mostrar as missoes

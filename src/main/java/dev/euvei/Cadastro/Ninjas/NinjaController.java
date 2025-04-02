@@ -3,7 +3,7 @@ package dev.euvei.Cadastro.Ninjas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController //mapear e mostrar que eh um NinjaController
-@RequestMapping // anda junto ao RestCon
+@RequestMapping("/ninjas") // anda junto ao RestCon
 public class NinjaController {
 
 
@@ -20,13 +20,13 @@ public class NinjaController {
     }
 
     // Mostrar todos os Ninjas (read)
-    @GetMapping("/todos")
+    @GetMapping("/listar")
     public String mostrarTodosOsNinjas(){
         return "mostrar ninjas!";
     }
 
     // Mostrar Ninja por ID (read)
-    @GetMapping("/todosID")
+    @GetMapping("/listarID")
     public String mostrarTodosOsNinjasPorID(){
         return "mostrar ninjas por id!";
     }
