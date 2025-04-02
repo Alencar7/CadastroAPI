@@ -1,5 +1,6 @@
 package dev.euvei.Cadastro.Missoes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.euvei.Cadastro.Ninjas.NinjaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,8 +24,7 @@ public class MissoesModel { //UMA MISSAO PODE RECEBER VARIOS NINJAS!
 
     private String dificuldade;
 
-    //private NinjaModel ninja; //acessar o ninja model
-
     @OneToMany(mappedBy = "missoes") //one missao - to - many ninjas
+    @JsonIgnore // essa @Anotation evita o loop de serializacao
     private List<NinjaModel> ninjas;
 }
