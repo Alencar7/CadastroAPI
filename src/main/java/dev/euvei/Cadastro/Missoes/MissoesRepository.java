@@ -1,4 +1,4 @@
-package dev.euvei.Cadastro.Missoes.Controller.Services;
+package dev.euvei.Cadastro.Missoes;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

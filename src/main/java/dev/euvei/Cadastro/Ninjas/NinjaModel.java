@@ -1,7 +1,6 @@
 package dev.euvei.Cadastro.Ninjas;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import dev.euvei.Cadastro.Missoes.Controller.Services.MissoesModel;
+import dev.euvei.Cadastro.Missoes.MissoesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
