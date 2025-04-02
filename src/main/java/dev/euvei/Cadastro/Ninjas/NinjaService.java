@@ -3,6 +3,7 @@ package dev.euvei.Cadastro.Ninjas;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NinjaService {
@@ -14,11 +15,16 @@ public class NinjaService {
         this.ninjaRepository = ninjaRepository;
     }
 
-    //listar todos os ninjas
+    //logica para: listar todos os ninjas
     public List<NinjaModel> listarNinjas() {
         return ninjaRepository.findAll();  //INSERT = .findAll() -> JPA(interface -> ninjaRepository extends JpaRepository)
     }
 
+    //logica para: listar todos os ninjas por ID
+    public NinjaModel listarNinjasPorId(Long id) {  //passar valor do id
+        Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id); //Optional<T>
+        return ninjaPorId.orElse(null);
+    }
 
 
 
