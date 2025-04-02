@@ -2,10 +2,18 @@ package dev.euvei.Cadastro.Ninjas;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController //mapear e mostrar que eh um NinjaController
-@RequestMapping("/ninjas") // anda junto ao RestCon
+@RequestMapping("/ninjas") // anda junto ao RestController
 public class NinjaController {
 
+    //injecao de dependencias
+    private NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
+    }
 
     @GetMapping("/boasVindas") //Gep= pegar informacoes + (rota)
     public String boasVindas(){
@@ -21,14 +29,14 @@ public class NinjaController {
 
     // Mostrar todos os Ninjas (read)
     @GetMapping("/listar")
-    public String mostrarTodosOsNinjas(){
-        return "mostrar ninjas!";
+    public List<NinjaModel> listarNinjas(){
+        return ninjaService.listarNinjas();
     }
 
     // Mostrar Ninja por ID (read)
     @GetMapping("/listarID")
     public String mostrarTodosOsNinjasPorID(){
-        return "mostrar ninjas por id!";
+        return "listar ninjas por id!";
     }
 
     // Alterar dados dos ninjas (update)
