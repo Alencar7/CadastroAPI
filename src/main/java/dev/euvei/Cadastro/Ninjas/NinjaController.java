@@ -19,12 +19,12 @@ public class NinjaController {
     public String boasVindas(){
         return "Essa e minha primeira mensagem!";
     }
-
     //(CRUD)
+
     // Adicionar Ninja (create)
     @PostMapping("/criar")
-    public String criarNinja(){
-        return "ninja criado!";
+    public NinjaModel criarNinja(){
+        return ;
     }
 
     // Mostrar todos os Ninjas (read)

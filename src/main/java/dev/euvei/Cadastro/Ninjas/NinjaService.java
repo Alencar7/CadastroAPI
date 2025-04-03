@@ -17,7 +17,7 @@ public class NinjaService {
 
     //logica para: listar todos os ninjas
     public List<NinjaModel> listarNinjas() {
-        return ninjaRepository.findAll();  //INSERT = .findAll() -> JPA(interface -> ninjaRepository extends JpaRepository)
+        return ninjaRepository.findAll();  //SELECT = .findAll() -> JPA(interface -> ninjaRepository extends JpaRepository)
     }
 
     //logica para: listar todos os ninjas por ID
@@ -26,6 +26,14 @@ public class NinjaService {
         return ninjaPorId.orElse(null);
     }
 
+    //logica para: adicionar ninja com JPA
+    //passar o NinjaModel como parametro!
+    public NinjaModel criarNinja(NinjaModel novoNinja) {
+        return ninjaRepository.save(novoNinja);
+    }
+
+
+    //logica para: deletar ninja
 
 
 }
