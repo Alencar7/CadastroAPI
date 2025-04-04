@@ -40,5 +40,18 @@ public class NinjaService {
         ninjaRepository.deleteById(id);
     }
 
+    //logica para: Atualizar dados dos Ninjas -> PUT -> SQL
+    // PUT -> juncao do .getByID + Method POST -> achar o dado e sobre-escrever
+    public NinjaModel atualizarNinjaPorId(Long id, NinjaModel ninjaAtualizado) {
+        //condicao para id
+        if (ninjaRepository.existsById(id)) {
+            ninjaAtualizado.setId(id);
+            return ninjaRepository.save(ninjaAtualizado);
+        }
+        return null;
+
+    }
+
+
 
 }
