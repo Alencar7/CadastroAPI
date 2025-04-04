@@ -28,8 +28,8 @@ public class NinjaService {
 
     //logica para: adicionar ninja com JPA
     //passar o NinjaModel como parametro!
-    public NinjaModel criarNinja(NinjaModel novoNinja) {
-        return ninjaRepository.save(novoNinja);
+    public NinjaModel criarNinja(NinjaModel ninja) {
+        return ninjaRepository.save(ninja);
     }
 
 
