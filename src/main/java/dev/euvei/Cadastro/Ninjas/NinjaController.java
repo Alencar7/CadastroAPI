@@ -16,39 +16,39 @@ public class NinjaController {
     }
 
     @GetMapping("/boasVindas") //Gep= pegar informacoes + (rota)
-    public String boasVindas(){
+    public String boasVindas() {
         return "Essa e minha primeira mensagem!";
     }
     //(CRUD)
 
     // Adicionar Ninja (create)
     @PostMapping("/criar")
-    public NinjaModel criarNinja(@RequestBody NinjaModel ninja){ //@RequestBody => corpo da requisicao, ele vai mandar um JSON igual ao do DB
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) { //@RequestBody => corpo da requisicao, ele vai mandar um JSON igual ao do DB
         return ninjaService.criarNinja(ninja); // JSON(caracteristicas da tabela) -> serializacao -> DB
     }
 
     // Mostrar todos os Ninjas (read)
     @GetMapping("/listar")
-    public List<NinjaModel> listarNinjas(){
+    public List<NinjaModel> listarNinjas() {
         return ninjaService.listarNinjas();
     }
 
     // Mostrar Ninjas por ID (read)
     @GetMapping("/listar/{id}")   //localhost:8080/ninjas/listar/{id} = var do caminho
-    public NinjaModel listarNinjasPorId(@PathVariable Long id){        //@pathvariable = caminho da variavel
+    public NinjaModel listarNinjasPorId(@PathVariable Long id) {        //@pathvariable = caminho da variavel
         return ninjaService.listarNinjasPorId(id);
     }
 
     // Alterar dados dos ninjas (update)
     @PutMapping("/alterarID")
-    public String alterarNinjasPorID(){
+    public String alterarNinjasPorID() {
         return "alterar ninjas por id!";
     }
 
     // Deletar Ninja (delete)
-    @DeleteMapping("/deletar")
-    public String deletarNinjas(){
-        return "ninja deletado por ID";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarNinjasPorId(@PathVariable Long id) { //@PathVariable = tipo um scann para jogar dentro da url
+        ninjaService.deletarNinjaPorId(id);
     }
 
 
