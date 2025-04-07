@@ -10,8 +10,11 @@ public class NinjaService {
 
     //injecao de dependencias
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
+
     //construtor do OBj, que vem da injecao de dependencias
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaMapper ninjaMapper, NinjaRepository ninjaRepository) {
+        this.ninjaMapper = ninjaMapper;
         this.ninjaRepository = ninjaRepository;
     }
 
@@ -26,10 +29,12 @@ public class NinjaService {
         return ninjaPorId.orElse(null);
     }
 
-    //logica para: ADICIONAR ninja com JPA
+    //logica para: ADICIONAR ninjaDTO com JPA
     //passar o NinjaModel como parametro!
-    public NinjaModel criarNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja); //retornar o obj salvo
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
+      NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+      ninja = ninjaRepository.save(ninja);
+      return ninjaMapper.map(ninja);
     }
 
 

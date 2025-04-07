@@ -23,8 +23,9 @@ public class NinjaController {
 
     // Adicionar Ninja (create)
     @PostMapping("/criar")
-    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) { //@RequestBody => corpo da requisicao, ele vai mandar um JSON igual ao do DB
-        return ninjaService.criarNinja(ninja); // JSON(caracteristicas da tabela) -> serializacao -> DB
+    public NinjaDTO criarNinja(@RequestBody NinjaDTO ninja) { //@RequestBody => corpo da requisicao, ele vai mandar um JSON igual ao do DB
+      //  return ninjaService.criarNinja(ninja); // JSON(caracteristicas da tabela) -> serializacao -> DB
+        return ninjaService.criarNinja(ninja);
     }
 
     // Mostrar todos os Ninjas (read)
