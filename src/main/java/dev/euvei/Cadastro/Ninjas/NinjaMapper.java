@@ -32,7 +32,7 @@ public class NinjaMapper {
         ninjaDTO.setMissoes(ninjaModel.getMissoes());
         ninjaDTO.setRank(ninjaModel.getRank());
 
-        return new NinjaDTO();
+        return ninjaDTO;
     }
 
 
