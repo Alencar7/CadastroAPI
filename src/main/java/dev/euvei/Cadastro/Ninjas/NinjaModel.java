@@ -37,5 +37,7 @@ public class NinjaModel {  // UM NINJA SO PODE RECEBER UMA MISSAO POR VEZ!
     private MissoesModel missoes;
     //explicacao melhor na aula 17- como banco de dados funciona
 
-
+    //DTO
+    @Column (name = "rank")
+    private String rank;
 }
