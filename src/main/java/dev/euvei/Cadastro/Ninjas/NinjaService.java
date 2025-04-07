@@ -4,32 +4,43 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class NinjaService {
 
     //injecao de dependencias
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
+
     //construtor do OBj, que vem da injecao de dependencias
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaMapper ninjaMapper, NinjaRepository ninjaRepository) {
+        this.ninjaMapper = ninjaMapper;
         this.ninjaRepository = ninjaRepository;
     }
 
     //logica para: LISTAR todos os ninjas
-    public List<NinjaModel> listarNinjas() {
-        return ninjaRepository.findAll();  //SELECT = .findAll() -> JPA(interface -> ninjaRepository extends JpaRepository)
+    public List<NinjaDTO> listarNinjas() {
+        // return ninjaRepository.findAll();  //SELECT = .findAll() -> JPA(interface -> ninjaRepository extends JpaRepository)
+        List<NinjaModel> ninjas = ninjaRepository.findAll();
+        //percorrendo a lista ja feita para fazer a nova com as informacoes ja contidas
+        return ninjas.stream()
+                .map(ninjaMapper::map)
+                .collect(Collectors.toList());
     }
 
     //logica para: LISTAR todos os ninjas por ID
-    public NinjaModel listarNinjasPorId(Long id) {  //passar valor do id
+    public NinjaDTO listarNinjasPorId(Long id) {  //passar valor do id
         Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id); //Optional<T>
-        return ninjaPorId.orElse(null);
+        return ninjaPorId.map(ninjaMapper::map).orElse(null);
     }
 
-    //logica para: ADICIONAR ninja com JPA
+    //logica para: ADICIONAR ninjaDTO com JPA
     //passar o NinjaModel como parametro!
-    public NinjaModel criarNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja); //retornar o obj salvo
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
+      NinjaModel ninja = ninjaMapper.map(ninjaDTO);
+      ninja = ninjaRepository.save(ninja);
+      return ninjaMapper.map(ninja);
     }
 
 
@@ -42,15 +53,24 @@ public class NinjaService {
 
     //logica para: Atualizar dados dos Ninjas -> PUT -> SQL
     // PUT -> juncao do .getByID + Method POST -> achar o dado e sobre-escrever
-    public NinjaModel atualizarNinjaPorId(Long id, NinjaModel ninjaAtualizado) {
-        //condicao para id
-        if (ninjaRepository.existsById(id)) {
+    public NinjaDTO atualizarNinjaPorId(Long id, NinjaDTO ninjaDTO) {
+        Optional<NinjaModel> ninjaExistente = ninjaRepository.findById(id);
+        if (ninjaExistente.isPresent()) {
+            NinjaModel ninjaAtualizado = ninjaMapper.map(ninjaDTO);
             ninjaAtualizado.setId(id);
-            return ninjaRepository.save(ninjaAtualizado);
+            NinjaModel ninjaSalvo = ninjaRepository.save(ninjaAtualizado);
+            return ninjaMapper.map(ninjaSalvo);
         }
         return null;
-
     }
+    // antigo atualizarNinjaPorId
+//    public NinjaModel atualizarNinjaPorId(Long id, NinjaModel ninjaAtualizado) {
+//        if (ninjaRepository.existsById(id)) {
+//            ninjaAtualizado.setId(id); //sobre escrever ID
+//            return ninjaRepository.save(ninjaAtualizado);
+//        }
+//        return null;
+//    }
 
 
 
