@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tabela de Ninjas</title>
+    <link rel="stylesheet" th:href="@{/css/ninjaStyle.css}">
+</head>
+<body>
+<h1> Lista de Ninjas </h1>
+<a class="btn-adicionar" th:href="@{/ninjas/ui/adicionar}">Adicionar Novo Ninja</a>
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Imagem </th>
+        <th> Nome </th>
+        <th> Idade </th>
+        <th> Email </th>
+        <th> Rank </th>
+        <th> Missoes </th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr th:each="ninja:${ninjas}">
+            <td th:text="${ninja.id}"></td>
+            <td><img th:src="${ninja.imgUrl}" width="100" height="100"></td>
+            <td th:text="${ninja.nome}"></td>
+            <td th:text="${ninja.idade}"></td>
+            <td th:text="${ninja.email}"></td>
+            <td th:text="${ninja.rank}" th:data-rank="${ninja.rank}"></td>
+            <td>
+                <span th:if="${ninja.missoes}"><span th:text="${ninja.missoes.nome}"></span>, Dificuldade: <span th:text="${ninja.missoes.dificuldade}"></span></span>
+                <span th:if="${ninja.missoes == null}">Sem Missoes cadastradas para o ninja.</span>
+            </td>
+            <!--  Usa <td> sempre que quiser passar um conteudo-->
+            <td class="action-buttons">
+                <a th:href="@{/ninjas/ui/listar/{id}(id=${ninja.id})}">Ver detalhes</a>
+                <a th:href="@{/ninjas/ui/alterar/{id}(id=${ninja.id})}">Alterar</a>
+                <a th:href="@{/ninjas/ui/deletar/{id}(id=${ninja.id})}">Deletar</a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+</body>
+</html>

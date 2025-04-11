@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Alterar Ninja</title>
+    <link rel="stylesheet" th:href="@{/css/ninja-form.css}">
+
+</head>
+<body>
+<h1>Alterar Ninja</h1>
+<div class="form-container">
+    <div th:if="${mensagem}" class="mensagem" th:text="${mensagem}"></div>
+    <form th:action="@{'/ninjas/ui/alterar/' + ${ninja.id}}" th:object="${ninja}" method="post">
+
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required />
+
+        <label for="imgUrl">Url da imagem:</label>
+        <input type="text" id="imgUrl" th:field="*{imgUrl}" required />
+
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" th:field="*{idade}" required />
+
+        <label for="rank">Rank:</label>
+        <input type="text" id="rank" th:field="*{rank}" />
+
+        <button type="submit">Atualizar Ninja</button>
+
+    </form>
+    <a th:href="@{/ninjas/ui/listar}">Voltar para a lista de ninjas</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,246 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #e74c3c, #9b59b6);
+    border-radius: 2px;
+}
+
+/* Container de detalhes */
+div {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 30px;
+    align-items: start;
+}
+
+/* Imagem do ninja */
+div img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    grid-row: 1 / span 4;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+div img:hover {
+    transform: scale(1.03);
+}
+
+/* Nome do ninja */
+h2 {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 10px;
+}
+
+/* Informações do ninja */
+p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+p strong {
+    color: #34495e;
+    margin-right: 5px;
+    font-weight: 600;
+}
+
+/* Título para missões */
+h3 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin: 25px 0 15px;
+    grid-column: 1 / -1;
+}
+
+/* Tabela de missões */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 1rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    grid-column: 1 / -1;
+}
+
+thead tr {
+    background-color: #2c3e50;
+    color: #ffffff;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+    transition: all 0.3s ease;
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:last-of-type {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Link de voltar */
+a {
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+    padding: 12px 25px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    text-align: center;
+}
+
+a:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+}
+
+/* Estilos para diferentes ranks de ninjas */
+p strong + span[data-rank="Genin"] {
+    color: #2ecc71;
+    font-weight: 600;
+}
+
+p strong + span[data-rank="Chunin"] {
+    color: #3498db;
+    font-weight: 600;
+}
+
+p strong + span[data-rank="Jonin"] {
+    color: #9b59b6;
+    font-weight: 600;
+}
+
+p strong + span[data-rank="ANBU"] {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+p strong + span[data-rank="Kage"] {
+    color: #f1c40f;
+    font-weight: 600;
+}
+
+/* Adicionar um indicador visual para dificuldade das missões */
+td:nth-child(2) {
+    position: relative;
+    padding-left: 25px;
+}
+
+td:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+td:nth-child(2)[data-difficulty="D"]::before {
+    background-color: #3498db;
+}
+
+td:nth-child(2)[data-difficulty="C"]::before {
+    background-color: #2ecc71;
+}
+
+td:nth-child(2)[data-difficulty="B"]::before {
+    background-color: #f39c12;
+}
+
+td:nth-child(2)[data-difficulty="A"]::before {
+    background-color: #e74c3c;
+}
+
+td:nth-child(2)[data-difficulty="S"]::before {
+    background-color: #9b59b6;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    div {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    div img {
+        grid-row: auto;
+        max-width: 250px;
+        margin: 0 auto 20px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
