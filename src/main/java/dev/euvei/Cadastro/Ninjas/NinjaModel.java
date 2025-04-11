@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 //@Entity -> transforma uma Classe em uma Entidade do Banco de Dados
 @Entity
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data //lombok
 @NoArgsConstructor //lombok
 @AllArgsConstructor
+@ToString(exclude = "missoes") //Ui
 public class NinjaModel {  // UM NINJA SO PODE RECEBER UMA MISSAO POR VEZ!
 
     @Id // para o ID ser preenchido
