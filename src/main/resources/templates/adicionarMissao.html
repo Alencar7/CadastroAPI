@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Detalhe da Missao</title>
+<!--    <link rel="stylesheet" th:href="@{/css/ninja-form.css}">-->
+
+</head>
+<body>
+<h1>Adicionar Nova Missao</h1>
+<div class="form-container">
+    <div th:if="${mensagem}" class="mensagem" th:text="${mensagem}"></div>
+    <form th:action="@{/missoes/ui/salvar}" th:object="${missao}" method="post">
+        <!--   id nome dificuldade -->
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required />
+
+        <label for="dificuldade">Dificuldade:</label>
+        <input type="text" id="dificuldade" th:field="*{dificuldade}" required />
+
+        <button type="submit">Adicionar missão</button>
+
+    </form>
+    <a th:href="@{/missoes/ui/listar}">Voltar para a lista de missões</a>
+</div>
+</body>
+</html>

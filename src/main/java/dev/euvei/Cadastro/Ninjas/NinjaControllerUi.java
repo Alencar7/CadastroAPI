@@ -73,6 +73,7 @@ public class NinjaControllerUi {
 
     @PostMapping("/alterar/{id}")
     public String alterarNinja(@PathVariable Long id, @ModelAttribute NinjaDTO ninja, RedirectAttributes redirectAttributes) {
+
         NinjaDTO ninjaAtualizado = ninjaService.atualizarNinjaPorId(id, ninja);
         if (ninjaAtualizado != null) {
             redirectAttributes.addFlashAttribute("mensagem", "Ninja alterado com sucesso!");

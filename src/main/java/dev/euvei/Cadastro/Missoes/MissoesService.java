@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class MissoesService {
     // 1- injecao de dependencias e constructor
 
-    private MissoesRepository missoesRepository;
-    private MissoesMapper missoesMapper;
+    final private MissoesRepository missoesRepository;
+    final private MissoesMapper missoesMapper;
 
     public MissoesService(MissoesRepository missoesRepository, MissoesMapper missoesMapper) {
         this.missoesRepository = missoesRepository;
@@ -50,6 +50,7 @@ public class MissoesService {
     }
 
     public void deletarMissaoPorId(Long id) {
+
         missoesRepository.deleteById(id);
     }
 

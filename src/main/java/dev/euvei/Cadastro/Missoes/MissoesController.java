@@ -22,7 +22,9 @@ public class MissoesController {
     // POST --> Mandar uma requisicao para criar as missoes
     @PostMapping("/criar")
     public ResponseEntity<String> criarMissao(@RequestBody MissoesDTO missao) {
+
         MissoesDTO novaMissao = missoesService.criarMissao(missao);
+
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Missao criada com sucesso!" +
                         "\nNome: " + novaMissao.getNome() + "Id: " + novaMissao.getId());
@@ -30,32 +32,53 @@ public class MissoesController {
 
     // GET --> Mandar uma requisicao para mostrar as missoes
     @GetMapping("/listar")
-    public List<MissoesDTO> listarMissoes() {
-        return missoesService.listarMissoes();
+    public ResponseEntity<List<MissoesDTO>> listarMissoes() {
+
+        List<MissoesDTO> missoes = missoesService.listarMissoes();
+
+        return ResponseEntity.ok(missoes);
     }
 
     @GetMapping ("/listar/{id}")
-    public MissoesDTO listarMissaoPorId(@PathVariable Long id) {
-        return missoesService.listarMissoesPorId(id);
+    public ResponseEntity<?> listarMissaoPorId(@PathVariable Long id) {
+
+        MissoesDTO missoesPorId = missoesService.listarMissoesPorId(id);
+
+        if (missoesPorId != null) {
+            return ResponseEntity.ok(missoesPorId);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("A missao com ID: " + id + ", nao existe.");
+        }
     }
 
     // PUT --> Mandar uma requisicao para alterar as missoes
     @PutMapping("/alterar/{id}")
-    public MissoesDTO alterarMissaoPorId(@PathVariable Long id, @RequestBody MissoesDTO missaoAtualizada) {
-        return missoesService.atualizarMissaoPorId(id, missaoAtualizada);
+    public ResponseEntity<?> alterarMissaoPorId(@PathVariable Long id, @RequestBody MissoesDTO missaoAtualizada) {
+
+        MissoesDTO missao = missoesService.atualizarMissaoPorId(id, missaoAtualizada);
+
+        if (missao != null) {
+            return ResponseEntity.ok(missao);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("A missao com ID(" + id + ") não foi encontrada." );
+        }
     }
 
     // DELETE --> Mandar uma requisicao para deletar as missoes
     @DeleteMapping("/deletar/{id}")
     public ResponseEntity<String> deletarMissao(@PathVariable Long id) {
-        if (missoesService.listarMissoesPorId(id) != null) {
+
+       MissoesDTO missao = missoesService.listarMissoesPorId(id);
+
+        if (missao != null) {
             missoesService.deletarMissaoPorId(id);
             return ResponseEntity.ok("Missao com ID:" + id + " deletada!");
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("A missao com ID: " + id + " ,nao foi encontrada." );
         }
-
     }
 
 
