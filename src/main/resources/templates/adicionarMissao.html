@@ -2,26 +2,33 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Detalhe da Missao</title>
-<!--    <link rel="stylesheet" th:href="@{/css/ninja-form.css}">-->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhe da Missão</title>
+    <link rel="stylesheet" href="missao-form.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
 </head>
+
 <body>
-<h1>Adicionar Nova Missao</h1>
+<h1>Adicionar Nova Missão</h1>
 <div class="form-container">
-    <div th:if="${mensagem}" class="mensagem" th:text="${mensagem}"></div>
-    <form th:action="@{/missoes/ui/salvar}" th:object="${missao}" method="post">
-        <!--   id nome dificuldade -->
+    <div class="mensagem">Mensagem exibida aqui, se houver.</div>
+
+    <form action="/missoes/ui/salvar" method="post">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" th:field="*{nome}" required />
+        <input type="text" id="nome" name="nome" required aria-label="Nome da missão" />
 
         <label for="dificuldade">Dificuldade:</label>
-        <input type="text" id="dificuldade" th:field="*{dificuldade}" required />
+        <select id="dificuldade" name="dificuldade" required aria-label="Nível de dificuldade">
+            <option value="">Selecione...</option>
+            <option value="Fácil">Fácil</option>
+            <option value="Média">Média</option>
+            <option value="Difícil">Difícil</option>
+        </select>
 
         <button type="submit">Adicionar missão</button>
-
     </form>
-    <a th:href="@{/missoes/ui/listar}">Voltar para a lista de missões</a>
+
+    <a href="/missoes/ui/listar">Voltar para a lista de missões</a>
 </div>
 </body>
 </html>
