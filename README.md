@@ -83,104 +83,51 @@ A API estará disponível em http://localhost:8080.
 
 ## Endpoints Principais
 A API fornece os seguintes endpoints para interação:
-Ninjas
-Método
 
-Endpoint
-
-Descrição
-
-GET
-
-/api/ninjas
-
-Lista todos os ninjas.
-
-GET
-
-/api/ninjas/{id}
-
-Retorna um ninja por ID.
-
-POST
-
-/api/ninjas
-
-Cria um novo ninja.
-
-PUT
-
-/api/ninjas/{id}
-
-Atualiza um ninja existente.
-
-DELETE
-
-/api/ninjas/{id}
-
-Exclui um ninja por ID.
+| Método | Endpoint                | Descrição                        |
+|--------|-------------------------|----------------------------------|
+| GET    | /api/ninjas             | Lista todos os ninjas.           |
+| GET    | /api/ninjas/{id}        | Retorna um ninja por ID.         |
+| POST   | /api/ninjas             | Cria um novo ninja.              |
+| PUT    | /api/ninjas/{id}        | Atualiza um ninja existente.     |
+| DELETE | /api/ninjas/{id}        | Exclui um ninja por ID.          |
 
 Exemplo de corpo para POST/PUT (Ninja):
-json
+```json
 
 {
   "name": "Naruto Uzumaki",
   "village": "Konoha",
   "rank": "Genin"
 }
+```
+### Missões
 
-Missões
-Método
+| Método | Endpoint                | Descrição                        |
+|--------|-------------------------|----------------------------------|
+| GET    | /api/missions           | Lista todas as missões.          |
+| GET    | /api/missions/{id}      | Retorna uma missão por ID.       |
+| POST   | /api/missions           | Cria uma nova missão.            |
+| PUT    | /api/missions/{id}      | Atualiza uma missão existente.   |
+| DELETE | /api/missions/{id}      | Exclui uma missão por ID.        |
 
-Endpoint
-
-Descrição
-
-GET
-
-/api/missions
-
-Lista todas as missões.
-
-GET
-
-/api/missions/{id}
-
-Retorna uma missão por ID.
-
-POST
-
-/api/missions
-
-Cria uma nova missão.
-
-PUT
-
-/api/missions/{id}
-
-Atualiza uma missão existente.
-
-DELETE
-
-/api/missions/{id}
-
-Exclui uma missão por ID.
-
-Exemplo de corpo para POST/PUT (Missão):
-json
-
+**Exemplo de corpo para POST/PUT (Missão)**:
+```json
 {
   "description": "Escoltar comerciante até Vila da Areia",
   "type": "C",
   "difficulty": "Média"
 }
 
-Testando a API
+Exemplo de corpo para POST/PUT (Missão):
+```
+
+## Testando a API
 Para testar os endpoints, utilize ferramentas como Postman ou Insomnia. Certifique-se de que a API está rodando localmente (http://localhost:8080) e envie requisições com os formatos JSON apropriados.
 Exemplo de teste com cURL para criar um ninja:
-bash
+```bash
 
 curl -X POST http://localhost:8080/api/ninjas \
 -H "Content-Type: application/json" \
 -d '{"name":"Naruto Uzumaki","village":"Konoha","rank":"Genin"}'
-
+```
