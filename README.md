@@ -92,7 +92,7 @@ A API fornece os seguintes endpoints para interação:
 | PUT    | /api/ninjas/{id}        | Atualiza um ninja existente.     |
 | DELETE | /api/ninjas/{id}        | Exclui um ninja por ID.          |
 
-Exemplo de corpo para POST/PUT (Ninja):
+**Exemplo de corpo para POST/PUT (Ninja)**:
 ```json
 
 {
@@ -119,7 +119,6 @@ Exemplo de corpo para POST/PUT (Ninja):
   "difficulty": "Média"
 }
 
-Exemplo de corpo para POST/PUT (Missão):
 ```
 
 ## Testando a API
